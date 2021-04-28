@@ -1,5 +1,6 @@
 package com.vladimirsimek.educode;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -30,7 +31,7 @@ public class Main {
                 currentRawWordBuilder.append(currentRawWord.charAt(j));
             }
             currentRawWordBuilder.append(currentRawWord.charAt(0));
-            rotatedWordsList.set(i,currentRawWordBuilder.toString() + " ");
+            rotatedWordsList.set(i, currentRawWordBuilder.toString() + " ");
         }
 
         for (int i = 0; i < rotatedWordsList.size(); i++) {
@@ -259,8 +260,212 @@ public class Main {
         System.out.println(amountOfValidTriangles);
     }
 
+    public static void part3() {
+        System.out.println("Part 3:");
+        //Declaration
+        String path = "[S, #, O]\n" +
+                "[O, O, #]\n" +
+                "[#, O, #]\n" +
+                "[#, O, O]\n" +
+                "[O, #, O]\n" +
+                "[#, O, O]\n" +
+                "[#, O, #]\n" +
+                "[#, O, O]\n" +
+                "[O, #, O]\n" +
+                "[#, O, O]\n" +
+                "[#, O, #]\n" +
+                "[#, O, O]\n" +
+                "[O, #, O]\n" +
+                "[#, O, O]\n" +
+                "[#, O, #]\n" +
+                "[#, O, O]\n" +
+                "[O, #, O]\n" +
+                "[#, O, O]\n" +
+                "[#, O, #]\n" +
+                "[#, O, O]\n" +
+                "[O, #, O]\n" +
+                "[#, O, O]\n" +
+                "[#, O, #]\n" +
+                "[#, O, O]\n" +
+                "[O, #, O]\n" +
+                "[#, O, O]\n" +
+                "[#, O, #]\n" +
+                "[#, O, O]\n" +
+                "[O, #, O]\n" +
+                "[#, O, O]\n" +
+                "[#, O, #]\n" +
+                "[#, O, O]\n" +
+                "[O, #, O]\n" +
+                "[#, O, O]\n" +
+                "[#, O, #]\n" +
+                "[#, O, O]\n" +
+                "[O, #, O]\n" +
+                "[#, O, O]\n" +
+                "[#, O, #]\n" +
+                "[#, O, O]\n" +
+                "[O, #, O]\n" +
+                "[#, O, O]\n" +
+                "[#, O, #]\n" +
+                "[#, O, O]\n" +
+                "[O, #, O]\n" +
+                "[#, O, O]\n" +
+                "[#, O, #]\n" +
+                "[#, O, O]\n" +
+                "[O, #, O]\n" +
+                "[#, O, O]\n" +
+                "[#, O, #]\n" +
+                "[#, O, O]\n" +
+                "[O, #, O]\n" +
+                "[#, O, O]\n" +
+                "[#, O, #]\n" +
+                "[#, O, O]\n" +
+                "[O, #, O]\n" +
+                "[#, O, O]\n" +
+                "[#, O, #]\n" +
+                "[#, O, O]\n" +
+                "[O, #, O]\n" +
+                "[#, O, O]\n" +
+                "[#, O, #]\n" +
+                "[#, O, O]\n" +
+                "[O, #, O]\n" +
+                "[#, O, O]\n" +
+                "[#, O, #]\n" +
+                "[#, O, O]\n" +
+                "[O, #, O]\n" +
+                "[#, O, O]\n" +
+                "[#, O, #]\n" +
+                "[#, O, O]\n" +
+                "[O, #, O]\n" +
+                "[#, O, O]\n" +
+                "[#, O, #]\n" +
+                "[#, O, O]\n" +
+                "[O, #, O]\n" +
+                "[#, O, O]\n" +
+                "[#, O, #]\n" +
+                "[#, O, O]\n" +
+                "[O, #, O]\n" +
+                "[#, O, O]\n" +
+                "[#, O, #]\n" +
+                "[#, O, O]\n" +
+                "[O, #, O]\n" +
+                "[#, O, O]\n" +
+                "[#, O, #]\n" +
+                "[#, O, O]\n" +
+                "[O, #, O]\n" +
+                "[#, O, O]\n" +
+                "[#, O, #]\n" +
+                "[#, O, O]\n" +
+                "[O, #, O]\n" +
+                "[#, O, O]\n" +
+                "[#, O, #]\n" +
+                "[#, O, O]\n" +
+                "[O, #, O]\n" +
+                "[#, O, O]\n" +
+                "[#, O, #]\n" +
+                "[#, O, O]\n" +
+                "[O, #, O]\n" +
+                "[#, O, O]\n" +
+                "[#, O, #]\n" +
+                "[#, O, O]\n" +
+                "[O, #, O]\n" +
+                "[#, O, O]\n" +
+                "[#, O, #]\n" +
+                "[#, O, O]\n" +
+                "[O, #, O]\n" +
+                "[#, O, O]\n" +
+                "[#, O, #]\n" +
+                "[#, O, O]\n" +
+                "[O, #, O]\n" +
+                "[#, O, O]\n" +
+                "[#, O, #]\n" +
+                "[#, O, O]\n" +
+                "[O, #, O]\n" +
+                "[#, O, O]\n" +
+                "[#, O, #]\n" +
+                "[#, O, O]\n" +
+                "[O, #, O]\n" +
+                "[#, O, O]\n" +
+                "[#, O, #]\n" +
+                "[#, O, O]\n" +
+                "[O, #, O]\n" +
+                "[#, O, O]\n" +
+                "[#, O, #]\n" +
+                "[#, O, O]\n" +
+                "[O, #, O]\n" +
+                "[#, O, O]\n" +
+                "[#, O, #]\n" +
+                "[#, O, O]\n" +
+                "[O, #, O]\n" +
+                "[#, O, O]\n" +
+                "[#, O, #]\n" +
+                "[#, O, O]\n" +
+                "[O, #, O]\n" +
+                "[#, O, O]\n" +
+                "[#, O, #]\n" +
+                "[#, O, O]\n" +
+                "[O, #, O]\n" +
+                "[#, O, O]\n" +
+                "[#, O, #]\n" +
+                "[#, O, O]\n" +
+                "[O, #, O]\n" +
+                "[#, O, O]\n" +
+                "[#, O, #]\n" +
+                "[#, O, O]\n" +
+                "[O, #, O]\n" +
+                "[#, F, O]\n";
+        String[] pathArray = path.split("\n");
+        int moves = 0;
+        char player = 'S';
+        char wall = '#';
+        char space = 'O';
+        int pos1 = 1;
+        int pos2 = 4;
+        int pos3 = 7;
+        int playerPosition = pos1;
+        for (int i = 0; i < pathArray.length; i++) {
+            String curPath = pathArray[i];
+            String nextPath = "done";
+
+            try {
+                nextPath = pathArray[i + 1];
+
+                if (nextPath.charAt(playerPosition) == space) {
+                    moves++;
+                } else if (playerPosition == pos1) {
+                    playerPosition = pos2;
+                    moves++;
+                    moves++;
+                } else if (playerPosition == pos2) {
+                    if (curPath.charAt(pos1) == space) {
+                        playerPosition = pos1;
+                        moves++;
+                        moves++;
+                    } else {
+                        playerPosition = pos3;
+                        moves++;
+                        moves++;
+                    }
+                } else if (playerPosition == pos3) {
+                    playerPosition = pos2;
+                    moves++;
+                    moves++;
+                }
+
+                if (nextPath.charAt(pos2) == 'F') {
+                    moves++;
+                }
+
+
+            } catch (IndexOutOfBoundsException e) {
+                e.printStackTrace();
+            }
+        }
+        System.out.println(moves);
+    }
+
     public static void main(String[] args) {
-	    part1();
-	    part2();
+        part1();
+        part2();
+        part3();
     }
 }
