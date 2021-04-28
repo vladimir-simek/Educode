@@ -1582,12 +1582,22 @@ public class Main {
                                                                 System.out.println(rawStrings[i].charAt(59));
                                                                 System.out.println(rawStrings[i]);
                                                             }*/
+                                                            /*boolean val = false;
                                                             for (int j = 58; j < 62; j++) {
                                                                 if (String.valueOf(rawStrings[i].charAt(58)).equals("0") || String.valueOf(rawStrings[i].charAt(58)).equals("1") || String.valueOf(rawStrings[i].charAt(58)).equals("2")) {
-                                                                    if ()
+                                                                    countId
                                                                 }
+                                                            }*/
+                                                            int duh = 58;
+                                                            char what = rawStrings[i].charAt(duh);
+                                                            while (what != ']') {
+                                                                what = rawStrings[i].charAt(duh);
+                                                                if (what != ']') {
+                                                                    countId.append(what);
+                                                                }
+                                                                duh++;
                                                             }
-                                                                System.out.println(rawStrings[i]);
+                                                            if (Integer.parseInt(countId.toString()) < 271) valid++;
                                                         }
                                                     }
                                                 }
@@ -1606,11 +1616,16 @@ public class Main {
         System.out.println(valid);
     }
 
+    public static void part6() {
+
+    }
+
     public static void main(String[] args) {
         part1();
         part2();
         part3();
         part4();
         part5();
+        part6();
     }
 }
